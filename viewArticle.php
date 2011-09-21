@@ -5,13 +5,13 @@ require_once('DatabaseConn.php');
 // Create a new DbConnector object
 $con = new DatabaseConn();
 
-if($_GET['id'])
+if(isset($_GET['id']))
 {
 $id=$_GET['id'];
 }
 
 
-if($_POST['articleaction']
+if(isset($_POST['articleaction']))
 {
 $action=($_POST['articleaction']);
 switch ($action)
@@ -28,13 +28,12 @@ break;
 else
 {
 $result=$con->queryexec('SELECT title,content FROM cmsarticles ORDER BY ID DESC LIMIT 0,10');
-
 }
 
 
 
 // Get an array containing the resulting record
-while($row = $connector->fetchArray($result)){
+while($row = $con->fetchArray($result)){
 echo $row['title'];?>
 <br><br>
 <?php echo $row['content'];?><br><br>
