@@ -3,10 +3,19 @@ require_once('AccessChecker.php');
 require_once('DatabaseConn.php');
 $access = new AccessChecker();
 //if (!$access->checkLogin(2) ){ header("Location: login.php"); die(); }
+
+if(time()-$_SESSION['time']>300)
+$access->signout();
+else
+$_SESSION['time']=time();
+
+
 if (!(isset($_SESSION['user']) & isset($_SESSION['pass'])))
 { header("Location: login.html"); die(); }
+
 if (isset($_SESSION['user']) & isset($_SESSION['pass']))
 {
+
 ?>
 <html>
 <head>

@@ -1,8 +1,13 @@
 <?php
 require_once('AccessChecker.php');
 $access = new AccessChecker();
+if(time()-$_SESSION['time']>300)
+$access->signout();
+else
+$_SESSION['time']=time();
 if (!(isset($_SESSION['user']) & isset($_SESSION['pass'])))
 { header("Location: login.html"); die(); }
+
 ?>
 
 <html>

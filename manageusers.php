@@ -2,8 +2,14 @@
 require_once('AccessChecker.php');
 require_once('DatabaseConn.php');
 $con=new DatabaseConn();
+$access = new AccessChecker();
+if(time()-$_SESSION['time']>300)
+$access->signout();
+else
+$_SESSION['time']=time();
 if (!(isset($_SESSION['user']) & isset($_SESSION['pass'])))
 { header("Location: login.html"); die(); }
+
 /*if($_SESSION["designation"]!=1)
 { header("Location: login.html"); echo 'You need to be an admin to have access to that page'; die(); }*/
 if($_POST)
