@@ -7,8 +7,10 @@ class AccessChecker {
 
 	
 	function AccessChecker(){
+		session_cache_expire(10);
 		session_start();
 		header("Cache-control: private"); 
+		
 	}
 	
 	
@@ -63,6 +65,7 @@ class AccessChecker {
 				// log in
 				$_SESSION["user"] = $user;
 				$_SESSION["pass"] = $this->userdetails['pass'];
+				$_SESSION["designation"]=$this->userdetails['designation'];
 								
 				if ($goodRedirect) { 
 					header("Location: ".$goodRedirect."&session id=".strip_tags(session_id()));
