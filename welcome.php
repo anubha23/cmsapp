@@ -46,6 +46,7 @@ echo '<a href="manageusers.php">Manage your users</a><br/>';
 ?>
 <a href="changepwd.php?username=<?php $_GET['username'] ?>">Change your password</a>
 <br/>
+
 </body>
 
 </html>
