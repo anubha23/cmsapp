@@ -1,0 +1,15 @@
+login authentication
+
+article management
+
+user preferences
+
+role management
+
+session implementation 
+--to check whether user is logged in.
+--to unset variables & destroy a session after a fixed period of time.
+
+separate code from design
+
+integrate twitter and facebook

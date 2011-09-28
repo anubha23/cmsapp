@@ -10,8 +10,8 @@ $_SESSION['time']=time();
 if (!(isset($_SESSION['user']) & isset($_SESSION['pass'])))
 { header("Location: login.html"); die(); }
 
-/*if($_SESSION["designation"]!=1)
-{ header("Location: login.html"); echo 'You need to be an admin to have access to that page'; die(); }*/
+if($_SESSION["designation"]!=1)
+{ header("Location: login.html"); echo 'You need to be an admin to have access to that page'; die(); }
 if($_POST)
 {
 if (isset($_POST['hiddenfield']))
@@ -76,8 +76,8 @@ while($userlist=$con->fetchArray($result))
 
 
 <?php
-} echo '</table></form></body></html>';
-echo'<input type="hidden" name="hiddenfield"/>';
+} echo '</table><input type="hidden" name="hiddenfield"/></form></body></html>';
+
 }
 ?>
 <form id="frm2" action="addnew.php">

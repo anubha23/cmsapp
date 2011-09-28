@@ -44,7 +44,7 @@ Welcome <?php echo $_GET['username'];?> <br> <br>
 <?php if ($_GET['designation']==1)
 echo '<a href="manageusers.php">Manage your users</a><br/>';
 ?>
-<a href="changepwd.php">Change your password</a>
+<a href="changepwd.php?username=<?php $_GET['username'] ?>">Change your password</a>
 <br/>
 </body>
 
