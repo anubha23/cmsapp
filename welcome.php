@@ -24,7 +24,7 @@ if (isset($_SESSION['user']) & isset($_SESSION['pass']))
 </head>
 
 <body>
-Welcome <?php echo $_GET['username'];?> <br> <br>
+Welcome <?php echo $_GET['firstname'];?> <br> <br>
 
 <form name="form1" method="post" action="newArticle.php">
 <p>Enter a new article:</p>
@@ -44,11 +44,11 @@ Welcome <?php echo $_GET['username'];?> <br> <br>
 <?php if ($_GET['designation']==1)
 echo '<a href="manageusers.php">Manage your users</a><br/>';
 ?>
-<a href="changepwd.php?username=<?php $_GET['username'] ?>">Change your password</a>
+<a href="changepwd.php">Change your password</a>
 <br/>
-
+<a href="login.php?action=logout">Logout</a>
+<br/>
 </body>
-
 </html>
 <?php
 } ?>

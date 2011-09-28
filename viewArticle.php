@@ -5,10 +5,7 @@ require_once('DatabaseConn.php');
 // Create a new DbConnector object
 $con = new DatabaseConn();
 
-if(isset($_GET['id']))
-{
-$id=$_GET['id'];
-}
+
 
 
 if(isset($_POST['articleaction']))
@@ -21,9 +18,13 @@ $result=$con->queryexec('SELECT title,content FROM cmsarticles WHERE DATE_FORMAT
 break;
 
 default:
-$result = $con->queryexec('SELECT title,content FROM cmsarticles WHERE ID = '.$id);
+$result = $con->queryexec('SELECT title,content FROM cmsarticles WHERE ID = '.$_GET['id']);
 break;
 }
+}
+if(isset($_GET['id']))
+{
+$result=$con->queryexec('SELECT title,content FROM cmsarticles WHERE ID= '.$_GET['id']);
 }
 else
 {

@@ -12,26 +12,28 @@ if (!(isset($_SESSION['user']) & isset($_SESSION['pass'])))
 
 if($_SESSION["designation"]!=1)
 { header("Location: login.html"); echo 'You need to be an admin to have access to that page'; die(); }
+
 if($_POST)
 {
 if (isset($_POST['hiddenfield']))
 {
 $id1=$_POST['hiddenfield'];
-echo $id1;
 $username='txtusername'.$id1;
 $firstname='txtfirstname'.$id1;
 $lastname='txtlastname'.$id1;
+if ($_POST['btnupdate'.$id1])
+{
 $result1=$con->queryexec('UPDATE cmsusers SET user="'.$_POST[$username].'",firstname="'.$_POST[$firstname].'",lastname="'.$_POST[$lastname].'"where ID="'.$id1.'"');
 if ($result1)
 echo 'Database updated successfully';
 else
 echo 'There was a problem updating to the database';
 }
-/*else if ($_POST['delete'])
+else if ($_POST['btndelete'.$id1])
 {
-//$result1=$con->queryexec('DELETE from cmsusers where user="'.$_POST['txtusername'].'",
-
-}*/
+$result1=$con->queryexec('DELETE from cmsusers where ID='.$id1);
+}
+}
 }
 $result=$con->queryexec('Select * from cmsusers');
 ?>
@@ -50,7 +52,7 @@ id1=d;
 
 function update(id1)
 {
-document.frm.hiddenfield.value=id1;
+document.forms['frm'].hiddenfield.value=id1;
 alert(document.frm.hiddenfield.value);
 }
 
@@ -82,4 +84,6 @@ while($userlist=$con->fetchArray($result))
 ?>
 <form id="frm2" action="addnew.php">
 <input type="submit" name="btnaddnew" value="Add new user"/>
+<a href="login.php?action=logout">Logout</a>
+<br/>
 </form>

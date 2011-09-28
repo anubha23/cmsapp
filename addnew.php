@@ -54,6 +54,8 @@ Last name: <input type='text' name='txtlastname'/>
 <?php
 }?>
 <br/><a href="manageusers.php">Manage Users</a>
+<a href="login.php?action=logout">Logout</a>
+<br/>
 </body>
 </html>
  

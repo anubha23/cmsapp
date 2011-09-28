@@ -16,8 +16,8 @@ if($con->getNumRows($result)>0)
 {
 $arr=$con->fetchArray($result);
 $username=$arr['user'];
-$password=$arr['password'];
-$result1=$con->queryexec("Update cmsusers SET pass=PASSWORD('".$password."') where user='".$username."' and pass=PASSWORD('".$password."')");
+$password=$arr['pass'];
+$result1=$con->queryexec("Update cmsusers SET pass=PASSWORD('".$_POST['txtnewpwd']."') where user='".$username."' and pass='".$password."'");
 if ($result1)
 echo 'Password changed successfully';
 else 
@@ -36,8 +36,10 @@ else
 Welcome
 Enter old password : <input type='password' name='txtoldpwd'><br/>
 Enter new password : <input type='password' name='txtnewpwd'><br/>
-<input type='hidden' name='hiddenusername' value='<?php echo $_GET['username'] ?>'>
+<input type='hidden' name='hiddenusername' value='<?php echo $_SESSION['user'] ?>'>
 <br/>
 <input type='submit' name='btnchange' value='Change password' action='changepwd.php'>
 </form>
+<a href="login.php?action=logout">Logout</a>
+<br/>
 <?php } ?>

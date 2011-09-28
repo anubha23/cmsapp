@@ -32,10 +32,12 @@ $ins= "INSERT INTO cmsarticles (title,content,TitleTime) VALUES (". "'".$title."
 
 // Save the form data into the database 
 if ($result = $connector->queryexec($ins)){
-$query="Select * from cmsarticles";
+$query="SELECT MAX(ID) AS maxID FROM cmsarticles;";
 if ($res=$connector->queryexec($query))
-$id=($connector->getNumRows($res));
-echo '<center><b>Article added to the database</b></center><br> Click <a href="viewArticle.php?articleaction="latest"&id='.$id.'">here</a> to view your article!';
+$ans=$connector->fetchArray($res);
+$id=$ans['maxID'];
+//$id=($connector->getNumRows($res));
+echo '<center><b>Article added to the database</b></center><br> Click <a href="viewArticle.php?id='.$id.'">here</a> to view your article!';
 }
 else{
 
