@@ -72,7 +72,7 @@ while($userlist=$con->fetchArray($result))
 <td><input type="text" disabled="true" name="txtlastname<?php echo $userlist['ID'];?>" id="<?php echo $userlist['ID']; ?>" value="<?php echo $userlist['lastname'];?>"></td>
 <td><input type="button" name= "btnedit<?php echo $userlist['ID'];?>" value="Edit" id="<?php echo $userlist['ID']; ?>" onclick="edit(<?php echo $userlist['ID'];?>)">
 <input type="submit" name= "btnupdate<?php echo $userlist['ID'];?>" disabled="true" value="Update" id="<?php echo $userlist['ID'];?>" onclick="update(<?php echo $userlist['ID']?>)">
-<input type="submit" name= "btndelete<?php echo $userlist['ID'];?>" value="Delete" id="<?php echo $userlist['ID'];?>">
+<input type="submit" name= "btndelete<?php echo $userlist['ID'];?>" value="Delete" id="<?php echo $userlist['ID'];?>" onclick="update(<?php echo $userlist['ID']?>)">
 
 </td></tr>
 

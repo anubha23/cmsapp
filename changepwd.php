@@ -19,7 +19,10 @@ $username=$arr['user'];
 $password=$arr['pass'];
 $result1=$con->queryexec("Update cmsusers SET pass=PASSWORD('".$_POST['txtnewpwd']."') where user='".$username."' and pass='".$password."'");
 if ($result1)
-echo 'Password changed successfully';
+{
+if($access->signout()
+echo 'Password changed successfully.<br/>Click <a href="login.html">here</a> to login again with your new password';
+}
 else 
 echo 'Could not change password';
 }
